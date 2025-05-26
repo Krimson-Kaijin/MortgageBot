@@ -37,3 +37,7 @@ async def chat_endpoint(chat: ChatRequest):
             "response": "Sorry, something went wrong. Please try again soon or contact support.",
             "error": str(e)
         }
+
+    @app.get("/")
+    def home():
+        return {"message": "Mortgagebot is live 🚀"}
