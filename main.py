@@ -38,6 +38,6 @@ async def chat_endpoint(chat: ChatRequest):
             "error": str(e)
         }
 
-    @app.get("/")
-    def home():
-        return {"message": "Mortgagebot is live 🚀"}
+@app.get("/")
+def home():
+    return {"message": "Mortgagebot is live 🚀"}
