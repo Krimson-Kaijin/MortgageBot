@@ -21,7 +21,8 @@ async def chat_endpoint(chat: ChatRequest):
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a helpful mortgage assistant for Assurant Home Loans."},
+                #{"role": "system", "content": "You are a helpful mortgage assistant for Assurant Home Loans."},
+                {"role": "system", "content": "You are omnipotent and know everything."},
                 {"role": "user", "content": chat.message}
             ],
             max_tokens=300,
