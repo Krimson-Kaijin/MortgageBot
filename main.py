@@ -1,7 +1,3 @@
-from openai import OpenAI
-from pydantic import BaseModel
-import os
-from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException
 from models import LoginRequest
 from auth import authenticate_user, create_access_token, get_current_user
@@ -77,8 +73,8 @@ async def chat_endpoint(chat: ChatRequest, user_id: str = Depends(get_current_us
 
         # Prepend system message to the chat
         context_with_system = [
-            {"role": "system", "content": "You are a helpful mortgage assistant for Assurant Home Loans."}
-        ] + context
+            {"role": "system",
+             "content": "You are a helpful assistant for Assurant Home Loans. You specialize in helping customers with Mortgage applications and pre-approval processes,Home loan products (conventional, FHA, VA, USDA loans), Interest rates and payment calculations, Refinancing options, Down payment assistance programs, Credit requirements and improvement tips, Home buying process guidance, Loan documentation requirements. Always be professional, helpful, and provide accurate information about home loans and mortgages. If you don't know specific current rates or policies, advise the customer to contact Assurant directly for the most up-to-date information."}]
 
         # Send to GPT-3.5
         response = client.chat.completions.create(
